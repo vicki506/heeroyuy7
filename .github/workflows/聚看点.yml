@@ -22,11 +22,10 @@ jobs:
           node-version: 10.x
       - name: npm install
         run: |
-          cd ~/heeroyuy7
+          git checkout master
           npm install          
       - name: '运行 【聚看点】'
         run: |
-          cd ~/heeroyuy7
           node Task/jkd.js
         env:
           JKD_COOKIE: ${{ secrets.JKD_COOKIE }}
