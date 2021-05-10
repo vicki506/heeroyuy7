@@ -16,7 +16,7 @@ jobs:
        fhxzhd: ${{ secrets.fhxzhd }}
        
     steps:
-     - name: Checkout
+     - name: 111
        run: |
           git clone https://github.com/vicki506/heeroyuy7.git ~/heeroyuy7
       - name: Use Node.js 12.x
