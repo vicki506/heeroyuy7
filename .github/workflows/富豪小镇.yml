@@ -5,21 +5,26 @@ on:
   schedule:
      - cron: '*/10 * * * *'
   watch:
-    types: book
+    types: started
 
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+       fhxzurl: ${{ secrets.fhxzurl }}
+       fhxzhd: ${{ secrets.fhxzhd }}
+       
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
        run: |
-          git clone https://github.com/heeroyuy7/heeroyuy7.git ~/heeroyuy7
+          git clone https://github.com/vicki506/heeroyuy7.git ~/heeroyuy7
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
+        if: env.fhxzurl
         run: |
           cd ~/heeroyuy7
           git checkout master
@@ -29,9 +34,7 @@ jobs:
           cd ~/heeroyuy7
           node Task/fhxz.js
         env:
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          fhxzurl: ${{ secrets.fhxzurl }}
-          fhxzhd: ${{ secrets.fhxzhd }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}          
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
