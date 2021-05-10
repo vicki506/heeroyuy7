@@ -24,7 +24,6 @@ jobs:
           cd ~/heeroyuy7
           git checkout master
           npm install
-          npm install got #tough-cookie
       - name: '运行 【富豪小镇】'
         run: |
           cd ~/heeroyuy7
