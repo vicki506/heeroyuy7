@@ -3,7 +3,7 @@ name: 富豪小镇
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 * * * *'
+     - cron: '*/15 * * * *'
   watch:
     types: book
 
